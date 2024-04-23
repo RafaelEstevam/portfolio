@@ -51,7 +51,7 @@
       </div>
       <div class="w-full flex gap-4">
         <div class="w-80 h-80 rounded-full relative">
-          <div class="blob-animation-1 size-full bg-slate-800 flex flex-col justify-center items-center">
+          <div (click)="handleShowModal('wizard')" class="blob-animation-1 size-full bg-slate-800 flex flex-col justify-center items-center">
             <h2 class="text-white text-3xl font-bold">Wizard</h2>
             <p class="text-slate-500"><strong>#wordpress</strong></p>
           </div>
@@ -60,7 +60,7 @@
           </div> -->
         </div>
         <div class="w-80 h-80 rounded-full relative">
-          <div class="blob-animation-2 size-full bg-slate-800 flex flex-col justify-center items-center">
+          <div (click)="handleShowModal('marvel')" class="blob-animation-2 size-full bg-slate-800 flex flex-col justify-center items-center">
             <h2 class="text-white text-3xl font-bold">Marvel API</h2>
             <p class="text-slate-500"><strong>#react #javascript #API</strong></p>
           </div>
@@ -69,7 +69,7 @@
           </div> -->
         </div>
         <div class="w-80 h-80 rounded-full relative">
-          <div class="blob-animation-3 size-full bg-slate-800 flex flex-col justify-center items-center">
+          <div (click)="handleShowModal('recados')" class="blob-animation-3 size-full bg-slate-800 flex flex-col justify-center items-center">
             <h2 class="text-white text-3xl font-bold">Recados.IO</h2>
             <p class="text-slate-500"><strong>#vue #typescript #AI</strong></p>
           </div>
@@ -78,7 +78,7 @@
           </div> -->
         </div>
         <div class="w-80 h-80 rounded-full relative">
-          <div class="blob-animation-1 size-full bg-slate-800 flex flex-col justify-center items-center">
+          <div (click)="handleShowModal('blog')" class="blob-animation-1 size-full bg-slate-800 flex flex-col justify-center items-center">
             <h2 class="text-white text-3xl font-bold">Blog</h2>
             <p class="text-slate-500"><strong>#nextjs #typescript #graphql</strong></p>
           </div>
@@ -309,3 +309,6 @@
     </div>
   </div>
 </section>
+
+<modal-component>
+</modal-component>
