@@ -17,12 +17,9 @@
 
     <nav class="w-1/2 hidden md:flex flex-col items-center relative">
       <ul class="flex list w-full justify-between">
-        <li><a href="#home" class="block p-4 text-white">Home</a></li>
-        <li><a href="#about" class="block p-4 text-white">Sobre</a></li>
-        <li><a href="#portfolio" class="block p-4 text-white">Portfólio</a></li>
-        <li><a href="#carreer" class="block p-4 text-white">Carreira</a></li>
-        <li><a href="#skill" class="block p-4 text-white">Conhecimentos</a></li>
-        <li><a href="#contact" class="block p-4 text-white">Contatos</a></li>
+        @for(link of links; track link.label){
+          <li><a [href]="link.url" class="block p-4 text-white">{{ link.label }}</a></li>
+        }
       </ul>
     </nav>
     

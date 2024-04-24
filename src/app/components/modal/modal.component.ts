@@ -1,13 +1,22 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'modal-component',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, FormsModule],
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.css'
 })
 export class ModalComponent {
+
+  title: string = 'Wizard';
+  subtitle: string = 'Desenvolvimento de novo site da escola de inglês Wizard';
+  tags: string = '#wordpress #jquery #html #css #seo';
+  teste: string = 'teste';
+  showModal: boolean = false;
+
   // @Input() showModal:boolean = false;
   // @Input() modalName: string = '';
 

@@ -1,15 +1,27 @@
 <div
-  class="flex fixed h-screen w-full bg-[#00000090] top-0 left-0 z-20 justify-center items-center backdrop-blur-md"
+  class="fixed h-screen w-full bg-[#00000090] top-0 left-0 z-20 justify-center items-center backdrop-blur-md"
+  
+  [ngClass]="{
+    'flex': showModal,
+    'hidden': !showModal
+  }"
 >
+
+ 
+
   <div class="w-full md:w-3/4 flex flex-col justify-center items-center overflow-hidden rounded-xl">
     <div class=" w-full bg-slate-900 p-16">
       <div class="w-full flex justify-between items-center">
         <div class="flex flex-col gap-16">
           <div>
-            <h2 class="text-white text-4xl font-bold">Wizard</h2>
-            <p class="text-white">Desenvolvimento de novo site da escola de inglês Wizard</p>
+
+            <!-- <input [(ngModel)]="teste" />
+            <p class="text-white">{{ teste }}</p> -->
+
+            <h2 class="text-white text-4xl font-bold">{{ title }}</h2>
+            <p class="text-white">{{ subtitle }}</p>
           </div>
-          <p class="text-white"><strong>#wordpress #jquery #html #css #seo</strong></p>
+          <p class="text-white"><strong>{{ tags }}</strong></p>
         </div>
         <button class="border-2 border-slate-100 py-4 px-6 text-white rounded-full font-bold text-3xl">X</button>
       </div>
