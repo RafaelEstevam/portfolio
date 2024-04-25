@@ -50,42 +50,14 @@
         </div>
       </div>
       <div class="w-full flex gap-4">
-        <div class="w-80 h-80 rounded-full relative">
-          <div (click)="handleShowModal('wizard')" class="blob-animation-1 size-full bg-slate-800 flex flex-col justify-center items-center">
-            <h2 class="text-white text-3xl font-bold">Wizard</h2>
-            <p class="text-slate-500"><strong>#wordpress</strong></p>
+        @for(item of portfolio; track item.name){
+          <div class="w-80 h-80 rounded-full relative">
+            <bubble-component
+              [item]="item"
+              (openModal)="handleOpenModal($event)"
+            />
           </div>
-          <!-- <div class="size-full flex justify-center items-center">
-            <h2 class="text-white text-4xl font-bold">Wizard</h2>
-          </div> -->
-        </div>
-        <div class="w-80 h-80 rounded-full relative">
-          <div (click)="handleShowModal('marvel')" class="blob-animation-2 size-full bg-slate-800 flex flex-col justify-center items-center">
-            <h2 class="text-white text-3xl font-bold">Marvel API</h2>
-            <p class="text-slate-500"><strong>#react #javascript #API</strong></p>
-          </div>
-          <!-- <div class="size-full flex justify-center items-center">
-            <h2 class="text-white text-4xl font-bold">Marvel API</h2>
-          </div> -->
-        </div>
-        <div class="w-80 h-80 rounded-full relative">
-          <div (click)="handleShowModal('recados')" class="blob-animation-3 size-full bg-slate-800 flex flex-col justify-center items-center">
-            <h2 class="text-white text-3xl font-bold">Recados.IO</h2>
-            <p class="text-slate-500"><strong>#vue #typescript #AI</strong></p>
-          </div>
-          <!-- <div class="size-full flex justify-center items-center">
-            <h2 class="text-white text-4xl font-bold">Recados.IO</h2>
-          </div> -->
-        </div>
-        <div class="w-80 h-80 rounded-full relative">
-          <div (click)="handleShowModal('blog')" class="blob-animation-1 size-full bg-slate-800 flex flex-col justify-center items-center">
-            <h2 class="text-white text-3xl font-bold">Blog</h2>
-            <p class="text-slate-500"><strong>#nextjs #typescript #graphql</strong></p>
-          </div>
-          <!-- <div class="size-full flex justify-center items-center">
-            <h2 class="text-white text-4xl font-bold">Blog</h2>
-          </div> -->
-        </div>
+        }
       </div>
       <div class="w-full flex flex-col gap-16">
         <p class="text-xl text-white text-center">Atuação como <strong>desenvolvedor front-end</strong> em diferentes projetos <br/> de grandes empresas do país.</p>
@@ -116,39 +88,25 @@
     </div>
     <div class="w-full h-full flex gap-16 relative">
       <div class="w-1/2 flex flex-col gap-8">
-        <div class="flex flex-col gap-4 items-end">
-          <h2 class="text-white text-3xl font-bold text-right">Banco de dados</h2>
-          <p class="text-white text-right">Graduação tecnológica em Banco de dados, com foco em administração e desenvolvimento de sistemas com bancos de dados relacionais e não relacionais.</p>
-          <p class="text-white text-right">08/2018 - 09/2022</p>
-          <button class="text-white border border-slate-500 rounded-full py-2 px-4">Saiba mais +</button>
-        </div>
+        @for(item of graduation; track item.id){
+          <curriculum-component
+            [item]="item"
+            (openModal)="handleOpenModal($event)"
+            [direction]="'items-end'"
+            [textDirection]="'text-right'"
+          />
+        }
       </div>
       <div class="w-[6px] h-20 bg-slate-800 sticky top-20 rounded-full"></div>
       <div class="w-1/2 flex flex-col gap-8">
-        <div class="flex flex-col gap-4 items-start">
-          <h2 class="text-white text-3xl font-bold">Printi</h2>
-          <p class="text-white">Suporte e manutenção de e-commerce com ReactJS, Next e etc.</p>
-          <p class="text-white">06/2023 - atual</p>
-          <button class="text-white border border-slate-500 rounded-full py-2 px-4">Saiba mais +</button>
-        </div>
-        <div class="flex flex-col gap-4 items-start">
-          <h2 class="text-white text-3xl font-bold">FITec</h2>
-          <p class="text-white">Desenvolvimento de front-end para aplicação de CRM com ReactJS, Next e etc.</p>
-          <p class="text-white">02/2021 - 06/2023</p>
-          <button class="text-white border border-slate-500 rounded-full py-2 px-4">Saiba mais +</button>
-        </div>
-        <div class="flex flex-col gap-4 items-start">
-          <h2 class="text-white text-3xl font-bold">Gauge</h2>
-          <p class="text-white">Desenvolvimento de front-end para aplicação de gestão de manutenção de aeronaves com ReactJS.</p>
-          <p class="text-white">02/2019 - 02/2021</p>
-          <button class="text-white border border-slate-500 rounded-full py-2 px-4">Saiba mais +</button>
-        </div>
-        <div class="flex flex-col gap-4 items-start">
-          <h2 class="text-white text-3xl font-bold">Univalle Sistemas</h2>
-          <p class="text-white">Desenvolvimento de front-end para aplicação de emissão de nota fiscal com AngularJS.</p>
-          <p class="text-white">01/2017 - 02/2019</p>
-          <button class="text-white border border-slate-500 rounded-full py-2 px-4">Saiba mais +</button>
-        </div>
+        @for(item of carreer; track item.id){
+          <curriculum-component
+            [item]="item"
+            (openModal)="handleOpenModal($event)"
+            [direction]="'items-start'"
+            [textDirection]="'text-left'"
+          />
+        }
       </div>
     </div>
   </div>
@@ -310,5 +268,8 @@
   </div>
 </section>
 
-<modal-component>
-</modal-component>
+<modal-component
+  [showModal]="showModal()"
+  [name]="modalName()"
+  (closeModal)="handleCloseModal($event)"
+/>

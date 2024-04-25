@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, signal, Signal, OnInit, input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ModalPortfolio } from '../../interfaces/portfolio.interface';
 
 @Component({
   selector: 'modal-component',
@@ -9,33 +10,23 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.css'
 })
-export class ModalComponent {
+export class ModalComponent implements ModalPortfolio {
 
-  title: string = 'Wizard';
-  subtitle: string = 'Desenvolvimento de novo site da escola de inglês Wizard';
-  tags: string = '#wordpress #jquery #html #css #seo';
-  teste: string = 'teste';
-  showModal: boolean = false;
+  showProject: boolean = false;
+  showGit: boolean = false;
+  content: any;
+  imgUrl: string = '';
+  id: string = '';
+  bubbleType: string = 'blob-animation-1';
+  subtitle: string = '';
+  tags: string[] = [];
 
-  // @Input() showModal:boolean = false;
-  // @Input() modalName: string = '';
+  @Input() public showModal = false;
+  @Input() public name : string = '';
+  @Output() public closeModal = new EventEmitter();
 
-  // @Output() closeModal = new EventEmitter<any>();
+  public handleCloseModal(){
+    return this.closeModal.emit(false);
+  };
 
-  // emitEvent() {
-  //   this.closeModal.emit('');
-  // }
-
-  // openModal(){
-  //   this.showModal = true;
-  // };
-
-  // closeModal(){
-  //   this.showModal = false;
-  // }
-
-  // onMounted(){
-  //   console.log('teste');
-  //   console.log(this.modalName)
-  // }
 }

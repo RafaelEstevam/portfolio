@@ -1,0 +1,11 @@
+<div (click)="handleShowModal(item)"
+  class="size-full bg-slate-800 flex flex-col justify-center items-center"
+  [ngClass]="item.bubbleType"
+>
+  <h2 class="text-white text-3xl font-bold">{{ item.name }}</h2>
+  <div class="flex gap-2">
+    @for(tag of item.tags; track tag){
+      <p class="text-slate-500"><strong>#{{ tag }}</strong></p>
+    }
+  </div>
+</div>

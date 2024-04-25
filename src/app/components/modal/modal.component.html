@@ -12,16 +12,12 @@
       <div class="w-full flex justify-between items-center">
         <div class="flex flex-col gap-16">
           <div>
-
-            <!-- <input [(ngModel)]="teste" />
-            <p class="text-white">{{ teste }}</p> -->
-
-            <h2 class="text-white text-4xl font-bold">{{ title }}</h2>
+            <h2 class="text-white text-4xl font-bold">{{ name }}</h2>
             <p class="text-white">{{ subtitle }}</p>
           </div>
           <p class="text-white"><strong>{{ tags }}</strong></p>
         </div>
-        <button class="border-2 border-slate-100 py-4 px-6 text-white rounded-full font-bold text-3xl">X</button>
+        <button (click)="handleCloseModal()" class="border-2 border-slate-100 py-4 px-6 text-white rounded-full font-bold text-3xl">X</button>
       </div>
     </div>
     <div class="w-full bg-black p-16 max-h-[500px] overflow-y-auto">
