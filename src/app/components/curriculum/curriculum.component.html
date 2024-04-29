@@ -2,9 +2,9 @@
   class="flex flex-col gap-4"
   [ngClass]="direction"
 >
-  <h2 class="text-white text-3xl font-bold" [ngClass]="textDirection">{{ item.name }}</h2>
-  <p class="text-slate-500 text-xl" [ngClass]="textDirection"><strong>{{ item.companyName }}</strong></p>
-  <p class="text-white" [ngClass]="textDirection">{{ item.shortDescription }}</p>
-  <p class="text-white" [ngClass]="textDirection">{{ item.startDate }} - {{ item.endDate }}</p>
+  <h2 class="text-white text-3xl font-bold" [ngClass]="textDirection">{{ item.resume.name }}</h2>
+  <p class="text-slate-500 text-xl" [ngClass]="textDirection"><strong>{{ item.name }}</strong></p>
+  <p class="text-white" [ngClass]="textDirection">{{ item.resume.description }}</p>
+  <p class="text-white" [ngClass]="textDirection">{{ item.startEndDate.startDate }} - {{ item.startEndDate.isCurrent && 'atual' || item.startEndDate.endDate  }}</p>
   <button (click)="handleOpenModal(item)" class="text-white border border-slate-500 rounded-full py-2 px-4">Saiba mais +</button>
 </div>

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Curriculum } from '../../interfaces/curriculum.interface';
 import { CommonModule } from '@angular/common';
 
@@ -9,15 +9,32 @@ import { CommonModule } from '@angular/common';
   templateUrl: './curriculum.component.html',
   styleUrl: './curriculum.component.css'
 })
-export class CurriculumComponent {
+export class CurriculumComponent implements OnInit {
 
   @Input() public item:Curriculum = {
     id: '',
-    companyName: '',
-    shortDescription: '',
-    startDate: '',
     name: '',
-    endDate: ''
+    companyPage: '',
+    links: [],
+    logo: {
+      fileName: '',
+      height: 0,
+      width: 0,
+      url: ''
+    },
+    moreInformations: {
+      html: ''
+    },
+    resume: {
+      name: '',
+      description: ''
+    },
+    startEndDate: {
+      startDate: '',
+      endDate: '',
+      isCurrent: false
+    },
+    categories: []
   }
   @Input() public direction: string = '';
   @Input() public textDirection: string = '';
@@ -26,6 +43,10 @@ export class CurriculumComponent {
 
   handleOpenModal(item: Curriculum){
     this.openModal.emit(item);
+  }
+
+  ngOnInit(): void {
+    // console.log(this.item);
   }
 
 }
