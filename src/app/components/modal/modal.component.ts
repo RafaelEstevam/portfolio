@@ -1,4 +1,4 @@
-import { CommonModule, registerLocaleData } from '@angular/common';
+import { CommonModule, NgOptimizedImage, registerLocaleData } from '@angular/common';
 import { Component, Input, Output, EventEmitter, LOCALE_ID } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -6,7 +6,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'modal-component',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, NgOptimizedImage],
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.css',
 })
@@ -25,5 +25,9 @@ export class ModalComponent {
   public handleCloseModal(){
     return this.closeModal.emit(false);
   };
+
+  public handleShowCenter(height: number){
+    return height < 1000
+  }
   
 }

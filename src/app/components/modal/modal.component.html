@@ -6,45 +6,75 @@
   }"
 >
 
-  <div class="w-full md:w-3/4 flex flex-col justify-center items-center overflow-hidden rounded-xl">
-    <div class=" w-full bg-slate-500 p-8">
-      <div class="w-full flex justify-between items-start">
-        <div class="flex flex-col gap-16">
-          <div class="flex flex-col gap-2">
-
-            @if(informations.__typename === 'Portfolio'){
-              <h2 class="text-white text-4xl font-bold">{{ informations.name }}</h2>
-            }
-
-            @if(informations.__typename === 'Company'){
-              <h2 class="text-white text-4xl font-bold">{{ informations.resume.name }}</h2>
-              <p class="text-white text-2xl">{{ informations.name }}</p>
-            }
-
-            <p class="text-white">
-              {{ informations.startEndDate.startDate | date:'MMMM, y' | titlecase }} -
-              {{informations.startEndDate.isCurrent && 'atual' || (informations.startEndDate.endDate | date:'MMMM, y' | titlecase)}}
-            </p>
+  <div class="w-full md:w-3/4 flex overflow-hidden rounded-xl bg-black">
+    @if(informations.__typename === 'Portfolio'){
+      <div
+        class="table-cel relative w-1/2 flex flex-col"
+        [ngClass]="{
+          'justify-center': handleShowCenter(informations.coverImage.height)
+        }"
+      >
+        <div
+          class="w-full max-h-[500px] overflow-y-auto flex flex-col items-center relative z-10"
+        >
+          <img
+            [src]="informations.coverImage.url"
+            [alt]="informations.coverImage.fileName"
+            [title]="informations.name"
+            [width]="informations.coverImage.width"
+            [height]="informations.coverImage.height"
+          />
+        </div>
+        <div
+            class="w-full h-full absolute blur-sm opacity-30 bg-center" 
+            [style]="'background-image: url(' + informations.coverImage.url + ')'"
+          >
           </div>
-          <div class="flex gap-2">
-            @for(category of informations.categories; track category.name ){
-              <p class="text-white"><strong>#{{ category.name }}</strong></p>
-            }
+      </div>
+    }
+    <div class="table-cel w-full">
+      <div class="w-full flex-col justify-center items-center">
+        <div class="w-full p-8 border-b-4 border-slate-800">
+          <div class="w-full flex justify-between items-start ">
+            <div class="flex flex-col gap-16">
+              <div class="flex flex-col gap-2">
+  
+                @if(informations.__typename === 'Portfolio'){
+                  <h2 class="text-white text-4xl font-bold">{{ informations.name }}</h2>
+                }
+  
+                @if(informations.__typename === 'Company'){
+                  <h2 class="text-white text-4xl font-bold">{{ informations.resume.name }}</h2>
+                  <p class="text-white text-2xl">{{ informations.name }}</p>
+                }
+  
+                <p class="text-white">
+                  {{ informations?.startEndDate?.startDate | date:'MMMM, y' | titlecase }} -
+                  {{ informations?.startEndDate?.isCurrent && 'atual' || (informations?.startEndDate?.endDate | date:'MMMM, y' | titlecase) }}
+                </p>
+              </div>
+              <div class="flex gap-2">
+                @for(category of informations.categories; track category.name ){
+                  <p class="text-white text-nowrap"><strong>#{{ category.name }}</strong></p>
+                }
+              </div>
+            </div>
+            <button (click)="handleCloseModal()" class="border-2 border-slate-500 py-4 px-6 text-slate-500 rounded-full font-bold text-3xl">X</button>
           </div>
         </div>
-        <button (click)="handleCloseModal()" class="border-2 border-slate-100 py-4 px-6 text-white rounded-full font-bold text-3xl">X</button>
-      </div>
-    </div>
-    <div class="w-full bg-black p-8 max-h-[500px] overflow-y-auto">
-      <div class="w-full flex flex-col items-start gap-8">
-        <div class="text-white flex flex-col gap-2" [innerHTML]="handleSanitizeHTML(informations.moreInformations.html)"></div>
-        <div class="flex gap-4">
-          @for(link of informations.links; track link.name){
-            <a class="text-white border border-slate-500 rounded-full py-2 px-4" [href]="link.url" target="_blank">{{link.name}}</a>
-          }
+        <div class="w-full h-full p-8 max-h-[500px] overflow-y-auto">
+          <div class="w-full flex flex-col items-start gap-8">
+            <div class="text-white flex flex-col gap-2" [innerHTML]="handleSanitizeHTML(informations?.moreInformations?.html)"></div>
+            <div class="flex gap-4">
+              @for(link of informations.links; track link.name){
+                <a class="text-white border border-slate-500 rounded-full py-2 px-4" [href]="link.url" target="_blank">{{link.name}}</a>
+              }
+            </div>
+          </div>
         </div>
       </div>
     </div>
+    
   </div>
 </div>
 

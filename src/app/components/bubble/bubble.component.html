@@ -1,11 +1,14 @@
 <div (click)="handleShowModal(item)"
-  class="size-full bg-slate-800 flex flex-col justify-center items-center"
+  class="size-full bg-slate-800 flex flex-col justify-center items-center gap-4"
   [ngClass]="bubbleType"
 >
   <h2 class="text-white text-3xl font-bold">{{ item.name }}</h2>
-  <div class="flex gap-2">
-    @for(category of item.categories; track category.name){
-      <p class="text-slate-500"><strong>#{{ category.name }}</strong></p>
-    }
+  <div class="w-3/4">
+    <div class="flex gap-x-2 gap-y-0 flex-wrap justify-center">
+      @for(category of item.categories; track category.name){
+        <p class="text-slate-500"><strong>#{{ category.name }}</strong></p>
+      }
+    </div>
   </div>
+  
 </div>
