@@ -39,7 +39,8 @@ export interface Curriculum {
   resume?: Resume,
   links: Links[]
   startEndDate: StartEndDate,
-  categories: Category[]
+  categories: Category[],
+  isGraduation: boolean,
 }
 
 export interface ModalCurriculum extends Curriculum{

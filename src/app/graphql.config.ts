@@ -1,1 +1,2 @@
-export const graphApi = 'https://api-us-east-1-shared-usea1-02.hygraph.com/v2/clvkd66wi169307tfuwdbghbh/master'
+export const graphApi = 'https://api-us-east-1-shared-usea1-02.hygraph.com/v2/clvkd66wi169307tfuwdbghbh/master';
+export const blogGraphApi = 'https://api-sa-east-1.hygraph.com/v2/clsbsbso32s1w01uq2z0e7cvv/master'

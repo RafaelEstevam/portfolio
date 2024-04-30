@@ -1,4 +1,4 @@
-import { ApplicationConfig } from '@angular/core';
+import { ApplicationConfig, LOCALE_ID } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -10,11 +10,16 @@ import { graphApi } from "./graphql.config";
 import { HttpClientModule } from "@angular/common/http";
 
 import { importProvidersFrom } from "@angular/core";
+import { registerLocaleData } from '@angular/common';
+
+import localePt from '@angular/common/locales/pt'
+registerLocaleData(localePt);
 
 export const appConfig: ApplicationConfig = {
   providers: [
     importProvidersFrom(HttpClientModule),
     provideRouter(routes),
+    {provide: LOCALE_ID, useValue: 'pt-BR'},
     {
       provide: APOLLO_OPTIONS,
       useFactory: (

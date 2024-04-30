@@ -36,7 +36,8 @@ const GET_companies = gql`
       },
       categories{
         name
-      }
+      },
+      isGraduation
     }
   }
 `;

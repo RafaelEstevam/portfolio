@@ -29,6 +29,7 @@
           </p>
           <h2 class="text-white text-5xl font-bold">Da ideia para a tela!</h2>
           <p class="text-white text-xl font-thin ">Focado no desenvolvimento web com especialidade em front-end, atuo no mercado desde 2017, aplicando meus conhecimentos, experiências e auxiliando os times onde atuo em diversos cenários e problemas adversos.</p>
+                  
         </div>
       </div>
     </div>
@@ -89,10 +90,10 @@
     </div>
     <div class="w-full h-full flex gap-16 relative">
       <div class="w-1/2 flex flex-col gap-8">
-        @for(item of graduation; track item.id){
+        @for(graduation of graduations; track graduation.id){
           <curriculum-component
-            [item]="item"
-            (openModal)="handleOpenModal('graduation')"
+            [item]="graduation"
+            (openModal)="handleOpenModal({id: graduation.id, type: 'company'})"
             [direction]="'items-end'"
             [textDirection]="'text-right'"
           />
@@ -114,6 +115,21 @@
   <div class="absolute blob-animation-1 w-[400px] h-[400px] border-4 border-slate-950 top-20 left-0"></div>
   <div class="absolute blob-animation-2 w-[400px] h-[400px] border-4 border-slate-900 top-20 left-0"></div>
 
+</section>
+
+<section id="language" class="py-24 relative">
+  <div class="md:max-w-[1200px] my-0 mx-auto flex flex-col gap-16">
+    <div class="w-full flex justify-evenly items-center">
+      <div>
+        <h2 class="text-white text-5xl font-bold">Línguas</h2>
+      </div>
+      <div>
+        <p class="text-white text-2xl">Português - <strong>Nativo</strong></p>
+        <p class="text-white text-2xl">Inglês - <strong>Intermediário (B2)</strong></p>
+      </div>
+    </div>
+  </div>
+  <div class="absolute blob-animation-3 w-[300px] h-[300px] border-4 border-slate-900 top-0 left-[22%]"></div>
 </section>
 
 <section id="skill" class="py-24">
@@ -208,16 +224,13 @@
   </div>
 </section>
 
-<section id="language" class="py-24">
+<section id="blog" class="py-24">
   <div class="md:max-w-[1200px] my-0 mx-auto flex flex-col gap-16">
     <div class="w-full flex justify-evenly items-center">
       <div>
-        <h2 class="text-white text-5xl font-bold">Línguas</h2>
+        <h2 class="text-white text-5xl font-bold">Blog</h2>
       </div>
-      <div>
-        <p class="text-white text-2xl">Português - Nativo</p>
-        <p class="text-white text-2xl">Inglês - Intermediário (B2)</p>
-      </div>
+      <blog-component />
     </div>
   </div>
 </section>

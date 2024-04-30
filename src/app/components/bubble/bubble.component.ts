@@ -34,7 +34,8 @@ export class BubbleComponent {
       endDate: '',
       isCurrent: false,
       startDate: ''
-    }
+    },
+    isGraduation: false
   };
   
   @Input() public bubbleType: string = '';

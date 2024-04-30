@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, LOCALE_ID, OnInit, Output } from '@angular/core';
 import { Curriculum } from '../../interfaces/curriculum.interface';
 import { CommonModule } from '@angular/common';
 
@@ -7,7 +7,8 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './curriculum.component.html',
-  styleUrl: './curriculum.component.css'
+  styleUrl: './curriculum.component.css',
+  
 })
 export class CurriculumComponent implements OnInit {
 
@@ -34,7 +35,8 @@ export class CurriculumComponent implements OnInit {
       endDate: '',
       isCurrent: false
     },
-    categories: []
+    categories: [],
+    isGraduation: false
   }
   @Input() public direction: string = '';
   @Input() public textDirection: string = '';

@@ -21,7 +21,10 @@
               <p class="text-white text-2xl">{{ informations.name }}</p>
             }
 
-            <p class="text-white">{{ informations.startEndDate.startDate | date }} - {{informations.startEndDate.isCurrent && 'atual' || informations.startEndDate.endDate | date}}</p>
+            <p class="text-white">
+              {{ informations.startEndDate.startDate | date:'MMMM, y' | titlecase }} -
+              {{informations.startEndDate.isCurrent && 'atual' || (informations.startEndDate.endDate | date:'MMMM, y' | titlecase)}}
+            </p>
           </div>
           <div class="flex gap-2">
             @for(category of informations.categories; track category.name ){

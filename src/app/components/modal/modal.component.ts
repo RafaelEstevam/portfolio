@@ -1,15 +1,14 @@
-import { CommonModule } from '@angular/common';
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { CommonModule, registerLocaleData } from '@angular/common';
+import { Component, Input, Output, EventEmitter, LOCALE_ID } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { Links } from '../../interfaces/curriculum.interface';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'modal-component',
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './modal.component.html',
-  styleUrl: './modal.component.css'
+  styleUrl: './modal.component.css',
 })
 export class ModalComponent {
   @Input() public showModal = false;

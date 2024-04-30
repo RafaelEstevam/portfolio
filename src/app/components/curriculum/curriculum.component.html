@@ -6,6 +6,6 @@
   <h2 class="text-white text-3xl font-bold" [ngClass]="textDirection">{{ item?.resume?.name || '' }}</h2>
   <p class="text-slate-500 text-xl" [ngClass]="textDirection"><strong>{{ item.name }}</strong></p>
   <p class="text-white" [ngClass]="textDirection">{{ item?.resume?.description || '' }}</p>
-  <p class="text-white" [ngClass]="textDirection">{{ item.startEndDate.startDate }} - {{ item.startEndDate.isCurrent && 'atual' || item.startEndDate.endDate  }}</p>
+  <p class="text-white" [ngClass]="textDirection">{{ item.startEndDate.startDate | date:'MMMM, y' | titlecase }} - {{ item.startEndDate.isCurrent && 'atual' || (item.startEndDate.endDate | date:'MMMM, y' | titlecase)  }}</p>
   <button (click)="handleOpenModal(item)" class="text-white border border-slate-500 rounded-full py-2 px-4">Saiba mais +</button>
 </div>
