@@ -11,8 +11,16 @@
       <div class="w-full flex justify-between items-start">
         <div class="flex flex-col gap-16">
           <div class="flex flex-col gap-2">
-            <h2 class="text-white text-4xl font-bold">{{ informations.resume.name }}</h2>
-            <p class="text-white text-2xl">{{ informations.name }}</p>
+
+            @if(informations.__typename === 'Portfolio'){
+              <h2 class="text-white text-4xl font-bold">{{ informations.name }}</h2>
+            }
+
+            @if(informations.__typename === 'Company'){
+              <h2 class="text-white text-4xl font-bold">{{ informations.resume.name }}</h2>
+              <p class="text-white text-2xl">{{ informations.name }}</p>
+            }
+
             <p class="text-white">{{ informations.startEndDate.startDate | date }} - {{informations.startEndDate.isCurrent && 'atual' || informations.startEndDate.endDate | date}}</p>
           </div>
           <div class="flex gap-2">
@@ -27,9 +35,11 @@
     <div class="w-full bg-black p-8 max-h-[500px] overflow-y-auto">
       <div class="w-full flex flex-col items-start gap-8">
         <div class="text-white flex flex-col gap-2" [innerHTML]="handleSanitizeHTML(informations.moreInformations.html)"></div>
-        <!-- <div>
-          <a class="text-white border border-slate-500 rounded-full py-2 px-4" href="https://wizard.com.br/" target="_blank">Ver projeto</a>
-        </div> -->
+        <div class="flex gap-4">
+          @for(link of informations.links; track link.name){
+            <a class="text-white border border-slate-500 rounded-full py-2 px-4" [href]="link.url" target="_blank">{{link.name}}</a>
+          }
+        </div>
       </div>
     </div>
   </div>

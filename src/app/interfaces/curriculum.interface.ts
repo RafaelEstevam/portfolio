@@ -14,7 +14,7 @@ interface MoreInformations{
   html: string,
 }
 
-interface Links{
+export interface Links{
   name: string,
   url: string,
 }
@@ -33,9 +33,10 @@ export interface Curriculum {
   id: string,
   name: string,
   logo: Logo,
+  coverImage?: Logo,
   moreInformations: MoreInformations;
   companyPage: string,
-  resume: Resume,
+  resume?: Resume,
   links: Links[]
   startEndDate: StartEndDate,
   categories: Category[]

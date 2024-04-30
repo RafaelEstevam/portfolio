@@ -50,11 +50,12 @@
         </div>
       </div>
       <div class="w-full flex gap-4">
-        @for(item of portfolio; track item.name){
+        @for(portfolio of portfolios; track portfolio.id; let c = $count; let l = $last){
           <div class="w-80 h-80 rounded-full relative">
             <bubble-component
-              [item]="item"
-              (openModal)="handleOpenModal('portfolio')"
+              [item]="portfolio"
+              (openModal)="handleOpenModal({id: portfolio.id, type: 'portfolio'})"
+              [bubbleType]="'blob-animation-' + (l ? 1 : c)"
             />
           </div>
         }
@@ -99,19 +100,10 @@
       </div>
       <div class="w-[6px] h-20 bg-slate-800 sticky top-20 rounded-full"></div>
       <div class="w-1/2 flex flex-col gap-8">
-        <!-- @for(item of carreer; track item.id){
+        @for(company of companies; track company.id){
           <curriculum-component
-            [item]="item"
-            (openModal)="handleOpenModal($event)"
-            [direction]="'items-start'"
-            [textDirection]="'text-left'"
-          />
-        } -->
-
-        @for(item of companies; track item.id){
-          <curriculum-component
-            [item]="item"
-            (openModal)="handleOpenModal({id: item.id, type: 'company'})"
+            [item]="company"
+            (openModal)="handleOpenModal({id: company.id, type: 'company'})"
             [direction]="'items-start'"
             [textDirection]="'text-left'"
           />
@@ -277,9 +269,12 @@
   </div>
 </section>
 
-<modal-component
-  [showModal]="showModal()"
-  [informations]="modalInformations()"
-  [id]="modalId()"
-  (closeModal)="handleCloseModal($event)"
-/>
+@defer(when showModal()){
+  <modal-component
+    [showModal]="showModal()"
+    [informations]="modalInformations()"
+    [id]="modalId()"
+    (closeModal)="handleCloseModal($event)"
+  />
+}
+

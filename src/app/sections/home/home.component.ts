@@ -10,6 +10,7 @@ import { CompaniesService } from '../../services/companies.service';
 
 import { Apollo } from 'apollo-angular';
 import { GET_companies, GET_company_by_id } from '../../queries/companies.query';
+import { GET_portfolios, GET_portfolio_by_id } from '../../queries/portfolio.query'
 
 @Component({
   selector: 'home-component',
@@ -29,16 +30,16 @@ export class HomeComponent implements OnInit {
 
   public showModal = signal<boolean>(false);
   public modalId = signal<string>('');
-  public modalInformations = signal<any>({})
+  public modalInformations = signal<any>({});
 
   error: any;
   loading : boolean = false;
 
-  public portfolio: Portfolio[] = [
-    {id: '1', name: 'Wizard', tags: ['wordpress'], bubbleType: 'blob-animation-1'},
-    {id: '2', name: 'Marvel API', tags: ['react', 'javascript', 'API'], bubbleType: 'blob-animation-2'},
-    {id: '3', name: 'Recados.IO', tags: ['vue', 'typescript', 'AI', 'websockets'], bubbleType: 'blob-animation-3'},
-    {id: '4', name: 'Blog', tags: ['nextjs', 'typescript', 'graphQl'], bubbleType: 'blob-animation-1'},
+  public portfolio: Curriculum[] = [
+    // {id: '1', name: 'Wizard', tags: ['wordpress'], bubbleType: 'blob-animation-1'},
+    // {id: '2', name: 'Marvel API', tags: ['react', 'javascript', 'API'], bubbleType: 'blob-animation-2'},
+    // {id: '3', name: 'Recados.IO', tags: ['vue', 'typescript', 'AI', 'websockets'], bubbleType: 'blob-animation-3'},
+    // {id: '4', name: 'Blog', tags: ['nextjs', 'typescript', 'graphQl'], bubbleType: 'blob-animation-1'},
   ];
 
   public graduation: Curriculum[] = [];
@@ -51,6 +52,7 @@ export class HomeComponent implements OnInit {
   ];
 
   public companies: any = [];
+  public portfolios: any = [];
 
   handleFindCompany(){
 
@@ -60,7 +62,11 @@ export class HomeComponent implements OnInit {
     this.showModal.set(true);
     
     if(type === 'company'){
-      this.loadCompany(id);
+      this.loadCompanyById(id);
+    }
+
+    if(type === 'portfolio'){
+      this.loadPortfolioById(id);
     }
     // this.modalName.set(item.name);
     // this.modalId.set(item.id);
@@ -78,12 +84,27 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  loadCompany(id:string){  
+  loadCompanyById(id:string){  
     this.apollo.watchQuery({
       query: GET_company_by_id(id)
     }).valueChanges.subscribe(({data, error} : any) => {
       this.modalInformations.set(data.company);
-      console.log(this.modalInformations())
+    })
+  }
+
+  loadPortfolios(){  
+    this.apollo.watchQuery({
+      query: GET_portfolios
+    }).valueChanges.subscribe(({data, error} : any) => {
+      this.portfolios = data.portfolios;
+    })
+  }
+
+  loadPortfolioById(id:string){
+    this.apollo.watchQuery({
+      query: GET_portfolio_by_id(id)
+    }).valueChanges.subscribe(({data, error} : any) => {
+      this.modalInformations.set(data.portfolio);
     })
   }
 
@@ -91,6 +112,7 @@ export class HomeComponent implements OnInit {
   
   ngOnInit(): void {
     this.loadCompanies();
+    this.loadPortfolios();
   }
 
   // constructor(){
