@@ -1,11 +1,12 @@
 import { Component, EventEmitter, Input, LOCALE_ID, OnInit, Output } from '@angular/core';
 import { Curriculum } from '../../interfaces/curriculum.interface';
 import { CommonModule } from '@angular/common';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
   selector: 'curriculum-component',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ButtonComponent],
   templateUrl: './curriculum.component.html',
   styleUrl: './curriculum.component.css',
   

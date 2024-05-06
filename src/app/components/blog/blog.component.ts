@@ -24,7 +24,6 @@ export class BlogComponent implements OnInit {
       query: GET_posts
     }).valueChanges.subscribe(({data, error} : any) => {
       this.posts.set(data.posts);
-      console.log(this.posts());
     })
   }
 

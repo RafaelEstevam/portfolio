@@ -12,6 +12,7 @@ import { Curriculum } from '../../interfaces/curriculum.interface';
 import { Apollo } from 'apollo-angular';
 import { GET_companies, GET_company_by_id } from '../../queries/companies.query';
 import { GET_portfolios, GET_portfolio_by_id } from '../../queries/portfolio.query'
+import { GET_tecnologiesLists } from '../../queries/tecnologies.query';
 
 @Component({
   selector: 'home-component',
@@ -47,6 +48,8 @@ export class HomeComponent implements OnInit {
   public graduations: Curriculum[] = [];
   public companies: Curriculum[] = [];
   public portfolios: Curriculum[] = [];
+  public tecnologies: any = [];
+  public mainTecnologies: any = [];
 
   handleFindCompany(){
 
@@ -99,11 +102,21 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  loadTecnologies(){
+    this.apollo.watchQuery({
+      query: GET_tecnologiesLists
+    }).valueChanges.subscribe(({data, error} : any) => {
+      this.mainTecnologies = data.tecnologiesLists.filter((item:any) => item.isMain === true);
+      this.tecnologies = data.tecnologiesLists.filter((item:any) => item.isMain === false);
+    })
+  }
+
   constructor(private apollo : Apollo){}
   
   ngOnInit(): void {
     this.loadCompanies();
     this.loadPortfolios();
+    this.loadTecnologies();
   }
 
   // constructor(){
