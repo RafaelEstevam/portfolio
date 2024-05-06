@@ -4,11 +4,12 @@ import { Apollo } from "apollo-angular";
 import { GET_posts } from '../../queries/blog.query';
 import BlogProvider from '../../providers/blog.provider';
 import { Post } from '../../interfaces/blog.interface';
+import { LinkComponent } from '../link/link.component';
 
 @Component({
   selector: 'blog-component',
   standalone: true,
-  imports: [],
+  imports: [LinkComponent],
   templateUrl: './blog.component.html',
   styleUrl: './blog.component.css',
   providers: BlogProvider

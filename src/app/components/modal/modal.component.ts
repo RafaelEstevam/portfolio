@@ -2,11 +2,12 @@ import { CommonModule, NgOptimizedImage, registerLocaleData } from '@angular/com
 import { Component, Input, Output, EventEmitter, LOCALE_ID } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
+import { LinkComponent } from '../link/link.component';
 
 @Component({
   selector: 'modal-component',
   standalone: true,
-  imports: [CommonModule, FormsModule, NgOptimizedImage],
+  imports: [CommonModule, FormsModule, NgOptimizedImage, LinkComponent],
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.css',
 })

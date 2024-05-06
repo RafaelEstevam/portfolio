@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'button-component',
@@ -10,15 +10,10 @@ import { Component, Input } from '@angular/core';
 export class ButtonComponent {
 
   @Input() public label: string = '';
-  @Input() public action!: void;
+  @Output() action = new EventEmitter<void>();
 
   handleAction(){
-
-    console.log('teste');
-
-    // console.log(this.action && this.action);
-
-    // this.action && this.action();
+    this.action.emit();
   }
 
 }

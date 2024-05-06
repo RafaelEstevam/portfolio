@@ -67,7 +67,8 @@
             <div class="text-white flex flex-col gap-2" [innerHTML]="handleSanitizeHTML(informations?.moreInformations?.html)"></div>
             <div class="flex gap-4">
               @for(link of informations.links; track link.name){
-                <a class="text-white border border-slate-500 rounded-full py-2 px-4" [href]="link.url" target="_blank">{{link.name}}</a>
+                <!-- <a class="text-white border border-slate-500 rounded-full py-2 px-4" [href]="link.url" target="_blank">{{link.name}}</a> -->
+                <link-component [url]="link.url" [label]="link.name" [target]="'_blank'" />
               }
             </div>
           </div>
