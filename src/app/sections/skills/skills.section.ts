@@ -2,16 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { GET_tecnologiesLists } from '../../queries/tecnologies.query';
 
-interface Tecnology {
-  name: string,
-  isMain?: boolean,
-}
-
-interface Tecnologies {
-  id: string,
-  tecnologies: Tecnology[]
-}
-
 @Component({
   selector: 'skills-section',
   standalone: true,
@@ -21,8 +11,8 @@ interface Tecnologies {
 })
 export class SkillsSection implements OnInit {
 
-  public tecnologies: Tecnologies[] = [{id: '', tecnologies: []}];
-  public mainTecnologies: Tecnologies[] = [];
+  public tecnologies: any = [];
+  public mainTecnologies: any = [];
 
   loadTecnologies(){
     this.apollo.watchQuery({
