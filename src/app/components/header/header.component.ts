@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { withViewTransitions } from '@angular/router';
+import { NetworksComponent } from '../networks/networks.component';
+import { CommonModule } from '@angular/common';
 
 interface Links {
   label: string,
@@ -9,11 +11,13 @@ interface Links {
 @Component({
   selector: 'header-component',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, NetworksComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
+
+  public showMenu: boolean = true;
 
   public links: Links[] = [
     {label: 'Home', url: '#home'},
@@ -25,6 +29,10 @@ export class HeaderComponent {
   ]
 
   constructor(){};
+
+  handleShowMenu(){
+    this.showMenu = !this.showMenu
+  }
 
   ngAfterViewChecked(): void {
    
