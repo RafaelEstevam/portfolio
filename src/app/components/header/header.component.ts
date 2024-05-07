@@ -17,7 +17,7 @@ interface Links {
 })
 export class HeaderComponent {
 
-  public showMenu: boolean = true;
+  public showMenu: boolean = false;
 
   public links: Links[] = [
     {label: 'Home', url: '#home'},

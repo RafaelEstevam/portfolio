@@ -8,7 +8,7 @@ interface Tecnology {
 }
 
 interface Tecnologies {
-  id?: string,
+  id: string,
   tecnologies: Tecnology[]
 }
 
@@ -21,7 +21,7 @@ interface Tecnologies {
 })
 export class SkillsSection implements OnInit {
 
-  public tecnologies: Tecnologies[] = [];
+  public tecnologies: Tecnologies[] = [{id: '', tecnologies: []}];
   public mainTecnologies: Tecnologies[] = [];
 
   loadTecnologies(){
