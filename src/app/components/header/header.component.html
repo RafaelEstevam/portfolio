@@ -1,28 +1,30 @@
-<header class="w-full fixed top-0 left-0 backdrop-blur-sm z-10 border-b-2 border-slate-700">
-  <div class="flex items-center justify-between px-10 md:px-0 xl:max-w-[1200px] my-0 mx-auto">
-    <div class="w-1/3 md:1/4 md:hidden">
-      <button class="text-white relative z-10 flex flex-col items-center justify-center blob-button w-10 h-4">
-        <span class="absolute z-10">menu</span>
-        <div class="blob blob-shadow w-10 h-10 border-4 border-slate-800"></div>
-      </button>
-    </div>
-    
-    <div class="w-1/3 md:1/4 flex justify-center md:justify-start relative">
-      <div class="flex justify-center items-center">
-        <h1 class="text-white text-3xl font-bold py-4">R&O</h1>
-        <!-- <div class="hidden md:block blob blob-shadow blob-menu w-10 h-10 border-4 border-slate-800"></div> -->
-      </div>
+<header class="w-full fixed top-0 left-0 backdrop-blur-sm z-10 border-b-2 border-slate-700 flex justify-center px-10">
+  <div class="w-full flex items-center justify-between px-10 my-0 mx-auto md:px-0 xl:w-5/6">
+    <div class="relative z-10">
+      <button class="xs:block xl:hidden bg-white p-4 uppercase rounded-xl text-black font-bold my-6">Menu</button>
     </div>
 
-    <nav class="w-1/2 hidden md:flex flex-col items-center relative">
-      <ul class="flex list w-full justify-between">
+    <div class="flex justify-center text-center py-4 absolute inset-x-0 xl:justify-start xl:relative">
+      <div class="flex justify-center items-center">
+        <h1 class="text-white text-4xl font-bold py-4">R&O</h1>
+      </div>
+    </div>
+    
+    <!-- <div class="flex justify-center relative">
+      <div class="flex justify-center items-center">
+        <h1 class="text-white text-4xl font-bold py-4">R&O</h1>
+      </div>
+    </div> -->
+
+    <nav class="w-1/2 hidden flex-col items-center relative xl:flex">
+      <ul class="flex gap-10 list w-full justify-between">
         @for(link of links; track link.label){
-          <li><a [href]="link.url" class="block text-white hover:underline">{{ link.label }}</a></li>
+          <li><a [href]="link.url" class="block text-white xl:py-10 hover:underline">{{ link.label }}</a></li>
         }
       </ul>
     </nav>
     
-    <nav class="w-1/3 md:1/4">
+    <nav class="relative z-10 xl:1/4">
       <ul class="flex justify-end gap-4">
         <li>
           <a href="www.linkedin.com/in/rafael-estevam-de-oliveira" target="_blank" title="Linkedin" class="block py-1 px-3 text-white">
