@@ -1,0 +1,39 @@
+<section id="carreer" class="py-24 relative">
+  <div class="md:max-w-[1200px] my-0 mx-auto flex flex-col gap-16">
+    <div class="w-full h-full flex flex-col">
+      <div class="w-full flex flex-col justify-center items-center gap-4">
+        <p class="text-slate-500">
+          <strong>#carreira</strong>
+        </p>
+        <div class="flex gap-4">
+          <h2 class="text-white text-5xl font-bold">Graduação</h2>
+          <h2 class="text-white text-5xl font-bold">&</h2>
+          <h2 class="text-white text-5xl font-bold">Experiência</h2>
+        </div>
+      </div>
+    </div>
+    <div class="w-full h-full flex gap-16 relative">
+      <div class="w-1/2 flex flex-col gap-8">
+        @for(graduation of graduations; track graduation.id){
+          <curriculum-component
+            [item]="graduation"
+            (openModal)="handleOpenModal({id: graduation.id, type: 'company'})"
+            [direction]="'items-end'"
+            [textDirection]="'text-right'"
+          />
+        }
+      </div>
+      <div class="w-[6px] h-20 bg-slate-800 sticky top-48 rounded-full"></div>
+      <div class="w-1/2 flex flex-col gap-8">
+        @for(company of companies; track company.id){
+          <curriculum-component
+            [item]="company"
+            (openModal)="handleOpenModal({id: company.id, type: 'company'})"
+            [direction]="'items-start'"
+            [textDirection]="'text-left'"
+          />
+        }
+      </div>
+    </div>
+  </div>
+</section>

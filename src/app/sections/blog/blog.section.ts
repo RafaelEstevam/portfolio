@@ -4,17 +4,17 @@ import { Apollo } from "apollo-angular";
 import { GET_posts } from '../../queries/blog.query';
 import BlogProvider from '../../providers/blog.provider';
 import { Post } from '../../interfaces/blog.interface';
-import { LinkComponent } from '../link/link.component';
+import { LinkComponent } from '../../components/link/link.component';
 
 @Component({
-  selector: 'blog-component',
+  selector: 'blog-section',
   standalone: true,
   imports: [LinkComponent],
-  templateUrl: './blog.component.html',
-  styleUrl: './blog.component.css',
+  templateUrl: './blog.section.html',
+  styleUrl: './blog.section.css',
   providers: BlogProvider
 })
-export class BlogComponent implements OnInit {
+export class BlogSection implements OnInit {
 
   constructor(private apollo : Apollo){};
 

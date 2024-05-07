@@ -23,14 +23,6 @@ export class PortfolioSection implements OnInit {
     })
   }
 
-  loadPortfolioById(id:string){
-    this.apollo.watchQuery({
-      query: GET_portfolio_by_id(id)
-    }).valueChanges.subscribe(({data, error} : any) => {
-      // this.modalInformations.set(data.portfolio);
-    })
-  }
-
   handleOpenModal({id, type}: any){
     this.openModal.emit({id, type});
   }
