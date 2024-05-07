@@ -13,9 +13,10 @@ import { Apollo } from 'apollo-angular';
 import { GET_companies, GET_company_by_id } from '../../queries/companies.query';
 import { GET_portfolios, GET_portfolio_by_id } from '../../queries/portfolio.query'
 import { GET_tecnologiesLists } from '../../queries/tecnologies.query';
+import { PortfolioSection } from '../portfolio/portfolio.section';
 
 @Component({
-  selector: 'home-component',
+  selector: 'home-section',
   standalone: true,
   imports: [
     CommonModule,
@@ -23,12 +24,13 @@ import { GET_tecnologiesLists } from '../../queries/tecnologies.query';
     ModalComponent,
     BubbleComponent,
     BlogComponent,
-    CurriculumComponent
+    CurriculumComponent,
+    PortfolioSection
   ],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  templateUrl: './home.section.html',
+  styleUrl: './home.section.css'
 })
-export class HomeComponent implements OnInit {
+export class HomeSection implements OnInit {
 
   public showModal = signal<boolean>(false);
   public modalId = signal<string>('');

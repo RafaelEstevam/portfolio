@@ -1,10 +1,10 @@
 <div class="relative h-[200vh]">
   <div class="sticky flex justify-end pr-72 top-40 md:max-w-[1200px] my-0 mx-auto h-[600px] ">
     <div class="flex justify-center items-center">
-      <div class="absolute blob-animation-3 w-[1200px] h-[1200px] border-4 border-slate-900"></div>
+      <!-- <div class="absolute blob-animation-3 w-[800px] h-[800px] border-4 border-slate-900"></div> -->
       <!-- <div class="blob-animation-3 w-[620px] h-[620px] border-4 border-slate-900"></div> -->
-      <div class="absolute blob-animation-2 w-[400px] h-[400px] bg-gradient-to-bl from-slate-900 to-black"></div>
-      <div class="absolute blob-animation-1 w-[400px] h-[400px] bg-gradient-to-bl from-slate-800 to-black"></div>
+      <!-- <div class="absolute blob-animation-2 w-[400px] h-[400px] bg-gradient-to-bl from-slate-900 to-black"></div> -->
+      <!-- <div class="absolute blob-animation-1 w-[400px] h-[400px] bg-gradient-to-bl from-slate-800 to-black"></div> -->
     </div>
   </div>
 
@@ -36,43 +36,7 @@
   </section>
 </div>
 
-<section id="portfolio" class="py-24">
-  <div class="md:max-w-[1200px] my-0 mx-auto overflow-x-hidden flex flex-col md:flex-row">
-    <div class="w-full flex flex-col gap-16">
-      <div class="w-full flex justify-between items-center">
-        <div class="flex flex-col gap-4">
-          <p class="text-slate-500">
-            <strong>#portfolio</strong>
-          </p>
-          <h2 class="text-white text-5xl font-bold">Projetos</h2>
-        </div>
-        <div>
-          <p class="text-white text-xl font-thin">Alguns dos projetos entregues profissionalmente <br/> e estudos realizados ao longo dos anos.</p>
-        </div>
-      </div>
-      <div class="w-full flex gap-4">
-        @for(portfolio of portfolios; track portfolio.id; let i = $index; let l = $last){
-          <div class="w-80 h-80 rounded-full relative">
-            <bubble-component
-              [item]="portfolio"
-              (openModal)="handleOpenModal({id: portfolio.id, type: 'portfolio'})"
-              [bubbleType]="'blob-animation-' + (l ? 1 : i + 1)"
-            />
-          </div>
-        }
-      </div>
-      <div class="w-full flex flex-col gap-16">
-        <p class="text-xl text-white text-center">Atuação como <strong>desenvolvedor front-end</strong> em diferentes projetos <br/> de grandes empresas do país.</p>
-        <div class="flex justify-around items-center">
-          <img src="assets/printi.png" title="printi" alt="printi" height="40" width="150" class="grayscale hover:grayscale-0" />
-          <img src="assets/acer.png" title="acer" alt="acer" height="40" width="150" class="grayscale hover:grayscale-0" />
-          <img src="assets/embraer.png" title="embraer" alt="embraer" height="40" width="150" class="grayscale hover:grayscale-0" />
-          <img src="assets/wizard.png" title="wizard" alt="wizard" height="40" width="150" class="grayscale hover:grayscale-0" />
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<portfolio-section (openModal)="handleOpenModal($event)"  />
 
 <section id="carreer" class="py-24 relative">
   <div class="md:max-w-[1200px] my-0 mx-auto flex flex-col gap-16">
@@ -112,8 +76,8 @@
       </div>
     </div>
   </div>
-  <div class="absolute blob-animation-1 w-[400px] h-[400px] border-4 border-slate-950 top-20 left-0"></div>
-  <div class="absolute blob-animation-2 w-[400px] h-[400px] border-4 border-slate-900 top-20 left-0"></div>
+  <!-- <div class="absolute blob-animation-1 w-[400px] h-[400px] border-4 border-slate-950 top-20 left-0"></div> -->
+  <!-- <div class="absolute blob-animation-2 w-[400px] h-[400px] border-4 border-slate-900 top-20 left-0"></div> -->
 </section>
 
 <section id="language" class="py-24 relative">
@@ -128,7 +92,7 @@
       </div>
     </div>
   </div>
-  <div class="absolute blob-animation-3 w-[300px] h-[300px] border-4 border-slate-900 top-0 left-[22%]"></div>
+  <!-- <div class="absolute blob-animation-3 w-[300px] h-[300px] border-4 border-slate-900 top-0 left-[22%]"></div> -->
 </section>
 
 <section id="skill" class="py-24">

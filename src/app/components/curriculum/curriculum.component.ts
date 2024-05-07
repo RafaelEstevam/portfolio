@@ -11,7 +11,7 @@ import { ButtonComponent } from '../button/button.component';
   styleUrl: './curriculum.component.css',
   
 })
-export class CurriculumComponent implements OnInit {
+export class CurriculumComponent {
 
   @Input() public item:Curriculum = {
     id: '',
@@ -43,13 +43,9 @@ export class CurriculumComponent implements OnInit {
   @Input() public textDirection: string = '';
 
   @Output() public openModal = new EventEmitter();
-
+  
   handleOpenModal(item: Curriculum){
     this.openModal.emit(item);
-  }
-
-  ngOnInit(): void {
-    // console.log(this.item);
   }
 
 }
