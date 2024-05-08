@@ -1,7 +1,7 @@
 <section id="portfolio" class="py-24 flex justify-center">
-  <div class="w-full flex flex-col px-10 py-10 xl:w-5/6 xl:px-8">
-    <div class="w-full flex flex-col gap-16">
-      <div class="w-full flex justify-between items-center gap-10">
+  <div class="w-full flex flex-col px-10 xl:w-5/6 xl:px-8">
+    <div class="w-full flex flex-col gap-8">
+      <div class="w-full flex gap-10 flex-col sm:flex-row sm:justify-between sm:items-end">
         <div class="flex flex-col gap-4">
           <p class="text-slate-500">
             <strong>#portfolio</strong>
@@ -12,9 +12,9 @@
           <p class="text-white text-xl font-thin">Alguns dos projetos entregues profissionalmente e estudos realizados ao longo dos anos.</p>
         </div>
       </div>
-      <div class="w-full gap-8 columns-1 md:columns-2 xl:columns-4 xl:flex-none">
+      <div class="w-full gap-8 columns-1 space-y-8 xl:space-y-0 md:columns-2 xl:columns-4 xl:flex-none">
         @for(portfolio of portfolios; track portfolio.id; let i = $index; let l = $last){
-          <div class="relative w-full h-80 pt-8 xl:pt-0">
+          <div class="relative w-full h-80">
             <bubble-component
               [item]="portfolio"
               (openModal)="handleOpenModal({id: portfolio.id, type: 'portfolio'})"

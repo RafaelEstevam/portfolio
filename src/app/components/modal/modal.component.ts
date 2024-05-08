@@ -3,11 +3,12 @@ import { Component, Input, Output, EventEmitter, LOCALE_ID } from '@angular/core
 import { FormsModule } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { LinkComponent } from '../link/link.component';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
   selector: 'modal-component',
   standalone: true,
-  imports: [CommonModule, FormsModule, NgOptimizedImage, LinkComponent],
+  imports: [CommonModule, FormsModule, NgOptimizedImage, LinkComponent, ButtonComponent],
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.css',
 })

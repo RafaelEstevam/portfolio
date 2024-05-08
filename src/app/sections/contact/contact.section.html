@@ -1,30 +1,44 @@
-<section id="contact" class="py-16 relative border-t-2 border-slate-700">
-  <div class="md:max-w-[1200px] my-0 mx-auto flex flex-col gap-16 justify-center">
-    <div class="w-full flex flex-col">
-      <div class="w-full flex flex-col justify-center items-center gap-4">
-        <p class="text-slate-500">
-          <strong>#contatos</strong>
-        </p>
-        <div class="flex gap-4">
+<section id="contact" class="py-24 relative flex justify-center">
+  <div class="w-full flex flex-col px-10 xl:w-5/6 xl:px-8">
+    <div class="w-full h-full flex flex-col">
+      <div class="w-full flex flex-col items-start justify-start md:items-center gap-4">
+        <p class="text-slate-500"><strong>#carreira</strong></p>
+        <div class="w-full flex flex-col justify-start gap-4 sm:flex-row md:justify-center">
           <h2 class="text-white text-5xl font-bold">Contatos</h2>
-          <h2 class="text-white text-5xl font-bold">&</h2>
-          <h2 class="text-white text-5xl font-bold">Endereço</h2>
+          <h2 class="text-white text-5xl font-bold hidden md:block">&</h2>
+          <h2 class="text-white text-5xl font-bold hidden md:block">Endereço</h2>
         </div>
       </div>
     </div>
-    <div class="w-full flex gap-16 relative">
-      <div class="w-1/2 flex flex-col gap-8">
-        <div class="flex flex-col gap-4 items-end">
-          <h2 class="text-white text-3xl font-bold text-right">Rafael Estevam de Oliveira</h2>
-          <p class="text-white text-right"><a href="mailto:rafael.estevamdesign@gmail.com">rafael.estevamdesign&#64;gmail.com</a></p>
-          <p class="text-white text-right"><strong>+55 12 98874-4909</strong></p>
-          <p class="text-white text-right">
-            <a href="www.linkedin.com/in/rafael-estevam-de-oliveira" target="_blank">Linkedin</a> |
-            <a href="https://github.com/RafaelEstevam" target="_blank">Github</a></p>
+    <div class="mt-8 md:mt-0">
+      <div class="w-20 h-[6px] bg-slate-800 rounded-full md:hidden md:mt-0"></div>
+    </div>
+    <div class="w-full h-full flex relative flex-col gap-8 mt-8 md:flex-row md:gap-16">
+      <div class="w-full flex flex-col gap-8 md:w-1/2">
+        <div class="flex flex-col gap-4 md:items-end">
+          <h2 class="text-white text-3xl font-bold md:text-right">Rafael Estevam de Oliveira</h2>
+          <p class="text-white md:text-right"><a href="mailto:rafael.estevamdesign@gmail.com" class="hover:underline">rafael.estevamdesign&#64;gmail.com</a></p>
+          <p class="text-white md:text-right"><strong>+55 12 98874-4909</strong></p>
+          <div class="flex gap-4">
+            <link-component [url]="'www.linkedin.com/in/rafael-estevam-de-oliveira'" [label]="'Linkedin'" [target]="'_blank'" />
+            <link-component [url]="'https://github.com/RafaelEstevam'" [label]="'Github'" [target]="'_blank'" />
+          </div>
         </div>
       </div>
-      <div class="w-[6px] h-20 bg-slate-800 sticky top-20 rounded-full"></div>
-      <div class="w-1/2 flex flex-col gap-8">
+
+      <div class="w-full h-full flex flex-col md:hidden">
+        <div class="w-full flex flex-col items-start justify-start md:items-center gap-4">
+          <div class="w-full flex flex-col justify-start gap-4 sm:flex-row md:justify-center">
+            <h2 class="text-white text-5xl font-bold">Endereço</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="md:sticky">
+        <div class="w-20 h-[6px] block bg-slate-800 rounded-full md:sticky md:top-48 md:w-[6px] md:h-20"></div>
+      </div>
+      
+      <div class="w-full flex flex-col gap-8 md:w-1/2">
         <div class="flex flex-col gap-4 items-start">
           <h2 class="text-white text-3xl font-bold">Localização</h2>
           <p class="text-white">Rua Professora Maria José de Oliveira, Nº205</p>
@@ -33,11 +47,10 @@
       </div>
     </div>
   </div>
-  <!-- <div class="absolute blob-animation-3 w-[600px] h-[600px] border-4 border-slate-900 -top-40 right-0"></div> -->
 </section>
 
-<section id="footer" class="py-4">
-  <div class="md:max-w-[1200px] my-0 mx-auto flex flex-col gap-16">
+<section id="footer" class="py-4 relative flex justify-center">
+  <div class="w-full flex flex-col px-10 xl:w-5/6 xl:px-8">
     <div class="w-full flex justify-between items-center">
       <p class="text-white">Feito com Angular, Tailwind</p>
       <p class="text-white">Rafael Estevam, {{ currentDate | date:'yyyy' }}</p>

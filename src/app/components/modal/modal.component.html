@@ -1,12 +1,12 @@
 <div
-  class="fixed h-screen w-full bg-slate-800 bg-opacity-90 top-0 left-0 z-20 justify-center items-center backdrop-blur-md"
+  class="fixed h-screen w-full bg-black bg-opacity-70 top-0 left-0 z-20 justify-center items-center backdrop-blur-md p-10 md:p-0"
   [ngClass]="{
     'flex': showModal,
     'hidden': !showModal
   }"
 >
 
-  <div class="w-full md:w-3/4 flex overflow-hidden rounded-xl bg-black">
+  <div class="w-full max-h-screen md:w-3/4 flex overflow-hidden rounded-xl bg-black border-2 border-slate-700">
     @if(informations.__typename === 'Portfolio'){
       <div
         class="table-cel relative w-1/2 flex flex-col"
@@ -15,7 +15,7 @@
         }"
       >
         <div
-          class="w-full max-h-[500px] overflow-y-auto flex flex-col items-center relative z-10"
+          class="w-full overflow-y-auto flex flex-col items-center relative z-10 md:max-h-[500px]"
         >
           <img
             [src]="informations.coverImage.url"
@@ -40,34 +40,35 @@
               <div class="flex flex-col gap-2">
   
                 @if(informations.__typename === 'Portfolio'){
-                  <h2 class="text-white text-4xl font-bold">{{ informations.name }}</h2>
+                  <h2 class="text-white text-2xl font-bold sm:text-4xl">{{ informations.name }}</h2>
                 }
   
                 @if(informations.__typename === 'Company'){
-                  <h2 class="text-white text-4xl font-bold">{{ informations.resume.name }}</h2>
+                  <h2 class="text-white text-2xl font-bold sm:text-4xl">{{ informations.resume.name }}</h2>
                   <p class="text-white text-2xl">{{ informations.name }}</p>
                 }
-  
                 <p class="text-white">
                   {{ informations?.startEndDate?.startDate | date:'MMMM, y' | titlecase }} -
                   {{ informations?.startEndDate?.isCurrent && 'atual' || (informations?.startEndDate?.endDate | date:'MMMM, y' | titlecase) }}
                 </p>
               </div>
-              <div class="flex gap-2">
+              <div class="flex gap-2 flex-wrap">
                 @for(category of informations.categories; track category.name ){
                   <p class="text-white text-nowrap"><strong>#{{ category.name }}</strong></p>
                 }
               </div>
             </div>
-            <button (click)="handleCloseModal()" class="border-2 border-slate-500 py-4 px-6 text-slate-500 rounded-full font-bold text-3xl">X</button>
+            <button-component
+              [label]="'X'"
+              (action)="handleCloseModal()"
+            />
           </div>
         </div>
-        <div class="w-full h-full p-8 max-h-[500px] overflow-y-auto">
+        <div class="w-full h-full p-8 max-h-[300px] overflow-y-auto lg:max-h-[500px]">
           <div class="w-full flex flex-col items-start gap-8">
             <div class="text-white flex flex-col gap-2" [innerHTML]="handleSanitizeHTML(informations?.moreInformations?.html)"></div>
             <div class="flex gap-4">
               @for(link of informations.links; track link.name){
-                <!-- <a class="text-white border border-slate-500 rounded-full py-2 px-4" [href]="link.url" target="_blank">{{link.name}}</a> -->
                 <link-component [url]="link.url" [label]="link.name" [target]="'_blank'" />
               }
             </div>
