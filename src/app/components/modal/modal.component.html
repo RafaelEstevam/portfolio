@@ -1,5 +1,5 @@
 <div
-  class="fixed h-screen w-full bg-black bg-opacity-70 top-0 left-0 z-20 justify-center items-center backdrop-blur-md p-10 md:p-0"
+  class="fixed h-screen w-full bg-black bg-opacity-70 top-0 left-0 z-20 justify-center items-center backdrop-blur-md p-10"
   [ngClass]="{
     'flex': showModal,
     'hidden': !showModal
@@ -64,7 +64,7 @@
             />
           </div>
         </div>
-        <div class="w-full h-full p-8 max-h-[300px] overflow-y-auto lg:max-h-[500px]">
+        <div class="w-full h-full p-8 max-h-[300px] overflow-y-auto">
           <div class="w-full flex flex-col items-start gap-8">
             <div class="text-white flex flex-col gap-2" [innerHTML]="handleSanitizeHTML(informations?.moreInformations?.html)"></div>
             <div class="flex gap-4">
