@@ -9,7 +9,7 @@
   <div class="w-full max-h-screen md:w-3/4 flex overflow-hidden rounded-xl bg-black border-2 border-slate-700">
     @if(informations.__typename === 'Portfolio'){
       <div
-        class="table-cel relative w-1/2 flex flex-col"
+        class="table-cel relative w-1/2 flex-col hidden sm:flex"
         [ngClass]="{
           'justify-center': handleShowCenter(informations.coverImage.height)
         }"
