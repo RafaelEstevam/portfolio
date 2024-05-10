@@ -1,4 +1,7 @@
-<div (click)="handleShowModal(item)"
+<div
+  [attr.data-aos]="animation"
+  [attr.data-aos-duration]="duration"
+  (click)="handleShowModal(item)"
   class="size-full flex flex-col justify-center items-center gap-4 cursor-pointer ease-linear duration-200 transition-all rounded-2xl border-2 border-slate-700 opacity-80 hover:border-blue-600 hover:opacity-100"
 >
   <h2 class="text-white text-3xl font-bold">{{ item.name }}</h2>

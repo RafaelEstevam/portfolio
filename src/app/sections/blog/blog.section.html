@@ -1,12 +1,13 @@
 <section id="blog" class="py-24 relative flex justify-center">
   <div class="w-full flex flex-col px-10 xl:w-5/6 xl:px-8">
     <div class="w-full flex gap-16 flex-col flex-wrap md:flex-row md:items-center md:justify-between lg:flex-nowrap">
-      <div>
-        <h2 class="text-white text-5xl font-bold">Blog</h2>
-      </div>
+      <h2 data-aos="fade-right" class="text-white text-5xl font-bold">Blog</h2>
       <div class="flex items-center gap-16 md:justify-between">
-        @for(post of posts(); track post.id){
-          <article>
+        @for(post of posts(); track post.id; let i = $index){
+          <article
+            data-aos="fade-up"
+            [attr.data-aos-duration]="500 + ((i*2)*100)"
+          >
             <a class="text-white text-sm" [href]="'https://rafaelestevam.netlify.app/' + post.slug" [title]="post.title" target="_blank">
               <h3 class="text-white text-xl font-bold hover:underline">{{post.title}}</h3>
             </a>
@@ -14,7 +15,9 @@
           </article>
         }
       </div>
-      <link-component [url]="'https://rafaelestevam.netlify.app'" [label]="'Mais publicações +'" [target]="'_blank'" />
+      <div data-aos="fade-left">
+        <link-component [url]="'https://rafaelestevam.netlify.app'" [label]="'Mais publicações +'" [target]="'_blank'" />
+      </div>
     </div>
   </div>
 </section>

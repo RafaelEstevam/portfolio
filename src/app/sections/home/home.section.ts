@@ -1,4 +1,5 @@
-import { Component, OnInit, signal } from '@angular/core';
+
+import { Component, signal, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HeaderComponent } from '../../components/header/header.component';
@@ -68,5 +69,11 @@ export class HomeSection {
     })
   }
 
-  constructor(private apollo : Apollo){}
+  // ngOnInit(): void {
+  //   if (isPlatformBrowser(this.platformId)) {
+  //     AOS.init();
+  //   }
+  // }
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, private apollo: Apollo) { }
 }

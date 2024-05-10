@@ -1,13 +1,14 @@
 <div class="w-full fixed z-10 flex justify-center border-b-2 border-slate-700 px-10 backdrop-blur-sm">
   <header class="w-full xl:w-5/6 flex justify-between items-center gap-32 relative z-10">
-    <div class="flex justify-center text-center py-4 absolute inset-x-0 xl:relative">
+    <div class="flex justify-center text-center py-4 absolute inset-x-0 xl:relative" data-aos="fade">
       <a href="/">
-        <h1 class="font-bold text-4xl text-white">R&amp;O</h1>
+        <h2 class="font-bold text-4xl text-white">R&amp;O</h2>
       </a>
     </div>
     <div class="relative z-10">
       <div>
-        <button (click)="handleShowMenu()" class="xs:block xl:hidden bg-white p-4 uppercase rounded-xl text-black font-bold my-6">Menu</button>
+        <button (click)="handleShowMenu()"
+          class="xs:block xl:hidden bg-white p-4 uppercase rounded-xl text-black font-bold my-6">Menu</button>
         <nav class="
           hidden
           items-left
@@ -21,23 +22,23 @@
           xl:w-fit
           xl:p-0
         ">
-          
+
           <ul class="flex gap-10 flex-col xl:flex-row items-start xl:items-center">
-            @for(link of links; track link.label){
-              <li><a [href]="link.url" class="block xl:py-10 text-white hover:underline">{{ link.label }}</a>
-              </li>
+            @for(link of links; track link.label; let i = $index){
+            <li data-aos="fade-right" [attr.data-aos-duration]="500 + ((i*2)*100)">
+              <a [href]="link.url" class="block xl:py-10 text-white hover:underline">{{ link.label }}</a>
+            </li>
             }
           </ul>
         </nav>
       </div>
     </div>
-    <div class="relative z-10 hidden md:block xl:1/4">
+    <div class="relative z-10 hidden md:block xl:1/4" data-aos="fade" data-aos-duration="500">
       <networks-component />
     </div>
   </header>
 </div>
-<div
-  class="
+<div class="
     fixed
     top-0
     left-0
@@ -52,19 +53,19 @@
     gap-10
     overflow-y-auto
     z-10
-  "
-  [ngClass]="{
+  " [ngClass]="{
     'flex': showMenu,
     'hidden': !showMenu
-  }"
->
+  }">
   <div>
-    <button (click)="handleShowMenu()" class="xs:block xl:hidden bg-white p-4 uppercase rounded-xl text-black font-bold">Fechar</button>
+    <button (click)="handleShowMenu()"
+      class="xs:block xl:hidden bg-white p-4 uppercase rounded-xl text-black font-bold">Fechar</button>
   </div>
   <ul class="flex gap-10 flex-col xl:flex-row items-start xl:items-center">
     @for(link of links; track link.label){
-      <li><a [href]="link.url" class="block xl:py-10 text-white hover:underline">{{ link.label }}</a>
-      </li>
+    <li>
+      <a [href]="link.url" class="block xl:py-10 text-white hover:underline">{{ link.label }}</a>
+    </li>
     }
   </ul>
   <div class="relative z-10 block md:block xl:1/4">

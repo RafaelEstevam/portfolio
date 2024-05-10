@@ -39,6 +39,8 @@ export class BubbleComponent {
   };
   
   @Input() public bubbleType: string = '';
+  @Input() public animation: string = '';
+  @Input() public duration: number = 0;
   @Output() public openModal = new EventEmitter();
 
   public handleShowModal(item:Curriculum){
