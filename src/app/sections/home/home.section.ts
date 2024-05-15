@@ -12,6 +12,7 @@ import { CarreerSection } from '../carreer/carreer.section';
 import { SkillsSection } from '../skills/skills.section';
 import { BlogSection } from '../blog/blog.section';
 import { ContactSection } from '../contact/contact.section';
+import { AnimationsService } from '../../services/animation.service';
 
 @Component({
   selector: 'home-section',
@@ -27,46 +28,51 @@ import { ContactSection } from '../contact/contact.section';
     ContactSection
   ],
   templateUrl: './home.section.html',
-  styleUrl: './home.section.css'
+  styleUrl: './home.section.css',
+  providers: [AnimationsService]
 })
-export class HomeSection {
+export class HomeSection implements OnInit {
 
   public showModal = signal<boolean>(false);
   public modalId = signal<string>('');
   public modalInformations = signal<any>({});
 
   error: any;
-  loading : boolean = false;
+  loading: boolean = false;
 
-  handleOpenModal({id, type}: any){
+  handleOpenModal({ id, type }: any) {
     this.showModal.set(true);
-    if(type === 'company'){
+    if (type === 'company') {
       this.loadCompanyById(id);
     }
-    if(type === 'portfolio'){
+    if (type === 'portfolio') {
       this.loadPortfolioById(id);
     }
   }
 
-  handleCloseModal(value:any){
+  handleCloseModal(value: any) {
     this.showModal.set(false);
   }
 
-  loadCompanyById(id:string){  
+  loadCompanyById(id: string) {
     this.apollo.watchQuery({
       query: GET_company_by_id(id)
-    }).valueChanges.subscribe(({data, error} : any) => {
+    }).valueChanges.subscribe(({ data, error }: any) => {
       this.modalInformations.set(data.company);
     })
   }
 
-  loadPortfolioById(id:string){
+  loadPortfolioById(id: string) {
     this.apollo.watchQuery({
       query: GET_portfolio_by_id(id)
-    }).valueChanges.subscribe(({data, error} : any) => {
+    }).valueChanges.subscribe(({ data, error }: any) => {
       this.modalInformations.set(data.portfolio);
     })
   }
 
-  constructor(private apollo : Apollo){}
+  constructor(private apollo: Apollo, private animationsService: AnimationsService) { }
+
+  ngOnInit(): void {
+    this.animationsService.handleGetElements();
+  }
 }

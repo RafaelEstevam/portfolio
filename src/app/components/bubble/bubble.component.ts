@@ -1,16 +1,17 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Portfolio } from '../../interfaces/portfolio.interface';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Curriculum } from '../../interfaces/curriculum.interface';
+import { AnimationsService } from '../../services/animation.service';
 
 @Component({
   selector: 'bubble-component',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './bubble.component.html',
-  styleUrl: './bubble.component.css'
+  styleUrl: './bubble.component.css',
+  providers: [AnimationsService]
 })
-export class BubbleComponent {
+export class BubbleComponent implements OnInit {
   @Input() public item:Curriculum = {
     id: '', name: '', categories: [],
     coverImage: {
@@ -43,5 +44,11 @@ export class BubbleComponent {
 
   public handleShowModal(item:Curriculum){
     return this.openModal.emit(item);
+  }
+
+  constructor(private animationsService: AnimationsService){}
+
+  ngOnInit(): void {
+    this.animationsService.handleGetElements();
   }
 }

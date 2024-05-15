@@ -1,15 +1,17 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Curriculum } from '../../interfaces/curriculum.interface';
 import { Apollo } from 'apollo-angular';
-import { GET_portfolios, GET_portfolio_by_id } from '../../queries/portfolio.query';
+import { GET_portfolios } from '../../queries/portfolio.query';
 import { BubbleComponent } from '../../components/bubble/bubble.component';
+import { AnimationsService } from '../../services/animation.service';
 
 @Component({
   selector: 'portfolio-section',
   standalone: true,
   imports: [BubbleComponent],
   templateUrl: './portfolio.section.html',
-  styleUrl: './portfolio.section.css'
+  styleUrl: './portfolio.section.css',
+  providers: [AnimationsService]
 })
 export class PortfolioSection implements OnInit {
   public portfolios: Curriculum[] = [];
@@ -18,8 +20,9 @@ export class PortfolioSection implements OnInit {
   loadPortfolios(){  
     this.apollo.watchQuery({
       query: GET_portfolios
-    }).valueChanges.subscribe(({data, error} : any) => {
+    }).valueChanges.subscribe(({data} : any) => {
       this.portfolios = data.portfolios;
+      this.animationsService.handleGetElements();
     })
   }
 
@@ -27,7 +30,7 @@ export class PortfolioSection implements OnInit {
     this.openModal.emit({id, type});
   }
 
-  constructor(private apollo: Apollo){}
+  constructor(private apollo: Apollo, private animationsService: AnimationsService){}
 
   ngOnInit(): void {
     this.loadPortfolios();

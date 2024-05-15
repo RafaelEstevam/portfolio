@@ -109,19 +109,6 @@
   position: absolute;
   z-index: -10;
   animation: blobber 15s ease-in-out infinite;
-
-  /* &.blob-animation-1{
-    animation: blobber1 15s ease-in-out infinite, rotate1 15s ease-in-out infinite;
-  }
-
-  &.blob-animation-2{
-    animation: blobber1 15s ease-in-out infinite;
-  }
-
-  &.blob-animation-3{
-    animation: blobber1 15s ease-in-out infinite;
-  } */
-
 }
 
 .link{
@@ -141,5 +128,15 @@
     position: absolute;
     z-index: -10;
     animation: blobber 15s ease-in-out infinite;
+  }
+}
+
+[data-animation='fade']{
+  opacity: 0;
+  transition-duration: 0.5s;
+  transition-property: all;
+  transition-timing-function: linear;
+  &.fade{
+    opacity: 1;
   }
 }
