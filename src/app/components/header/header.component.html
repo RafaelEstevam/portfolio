@@ -2,7 +2,7 @@
   <header class="w-full xl:w-5/6 flex justify-between items-center gap-32 relative z-10">
     <div class="flex justify-center text-center py-4 absolute inset-x-0 xl:relative">
       <a href="/">
-        <h1 class="font-bold text-4xl text-white">R&amp;O</h1>
+        <h2 data-animation="fade" class="font-bold text-4xl text-white">R&amp;O</h2>
       </a>
     </div>
     <div class="relative z-10">
@@ -21,17 +21,15 @@
           xl:w-fit
           xl:p-0
         ">
-          
           <ul class="flex gap-10 flex-col xl:flex-row items-start xl:items-center">
-            @for(link of links; track link.label){
-              <li><a [href]="link.url" class="block xl:py-10 text-white hover:underline">{{ link.label }}</a>
-              </li>
+            @for(link of links; track link.label; let i = $index){
+              <headerlink-component [label]="link.label" [url]="link.url" />
             }
           </ul>
         </nav>
       </div>
     </div>
-    <div class="relative z-10 hidden md:block xl:1/4">
+    <div class="relative z-10 hidden md:block xl:1/4" data-animation="fade">
       <networks-component />
     </div>
   </header>
@@ -62,8 +60,9 @@
     <button (click)="handleShowMenu()" class="xs:block xl:hidden bg-white p-4 uppercase rounded-xl text-black font-bold">Fechar</button>
   </div>
   <ul class="flex gap-10 flex-col xl:flex-row items-start xl:items-center">
-    @for(link of links; track link.label){
-      <li><a [href]="link.url" class="block xl:py-10 text-white hover:underline">{{ link.label }}</a>
+    @for(link of links; track link.label; let i = $index){
+      <li data-animation="fade" [attr.data-animation-duration]="'0.' + i + 's'">
+        <a [href]="link.url" class="block xl:py-10 text-white hover:underline">{{ link.label }}</a>
       </li>
     }
   </ul>

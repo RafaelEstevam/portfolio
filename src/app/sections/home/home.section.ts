@@ -1,5 +1,5 @@
-import { Component, OnInit, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Inject, OnInit, PLATFORM_ID, signal } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 
 import { HeaderComponent } from '../../components/header/header.component';
 import { ModalComponent } from '../../components/modal/modal.component';
@@ -70,9 +70,11 @@ export class HomeSection implements OnInit {
     })
   }
 
-  constructor(private apollo: Apollo, private animationsService: AnimationsService) { }
+  constructor(private apollo: Apollo, private animationsService: AnimationsService, @Inject(PLATFORM_ID) private platformId: Object) { }
 
   ngOnInit(): void {
-    this.animationsService.handleGetElements();
+    if (isPlatformBrowser(this.platformId)) {
+      this.animationsService.handleGetElements();
+    }
   }
 }

@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
-import { withViewTransitions } from '@angular/router';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { NetworksComponent } from '../networks/networks.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { AnimationsService } from '../../services/animation.service';
+import { HeaderlinkComponent } from '../headerlink/headerlink.component';
 
 interface Links {
   label: string,
@@ -11,11 +12,12 @@ interface Links {
 @Component({
   selector: 'header-component',
   standalone: true,
-  imports: [CommonModule, NetworksComponent],
+  imports: [CommonModule, NetworksComponent, HeaderlinkComponent],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrl: './header.component.css',
+  providers: [ AnimationsService ]
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
   public showMenu: boolean = false;
 
@@ -28,14 +30,16 @@ export class HeaderComponent {
     {label: 'Contatos', url: '#contact'}
   ]
 
-  constructor(){};
+  constructor(private animationsService: AnimationsService, @Inject(PLATFORM_ID) private platformId: Object) { }
+
+  ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      
+      this.animationsService.handleGetElements();
+    }
+  }
 
   handleShowMenu(){
     this.showMenu = !this.showMenu
   }
-
-  ngAfterViewChecked(): void {
-   
-  };
-
 }

@@ -3,6 +3,7 @@ import { Curriculum } from '../../interfaces/curriculum.interface';
 import { Apollo } from 'apollo-angular';
 import { GET_companies } from '../../queries/companies.query';
 import { CurriculumComponent } from '../../components/curriculum/curriculum.component';
+import { AnimationsService } from '../../services/animation.service';
 
 @Component({
   selector: 'carreer-section',
@@ -27,10 +28,11 @@ export class CarreerSection implements OnInit {
     }).valueChanges.subscribe(({data, error} : any) => {
       this.companies = data.companies.filter((item:Curriculum) => item.isGraduation === false);
       this.graduations = data.companies.filter((item:Curriculum) => item.isGraduation === true);
+      this.animationsService.handleGetElements();
     })
   }
 
-  constructor(private apollo: Apollo){}
+  constructor(private apollo: Apollo, private animationsService: AnimationsService){}
 
   ngOnInit(): void {
     this.loadCompanies();

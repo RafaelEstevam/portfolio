@@ -2,7 +2,6 @@ import { Injectable } from "@angular/core";
 
 @Injectable()
 export class AnimationsService {
-  elements = '';
 
   isElementInViewport(element:any){
     const el = element.getBoundingClientRect();
@@ -15,10 +14,14 @@ export class AnimationsService {
     element.style['transition-duration'] = cssDuration;
     element.style['transition-delay'] = cssDelay;
 
+    if(el.top === 0){
+      element.classList.add(cssClass);
+    }
+
     if(el.top < windowH && el.top > 0){
       element.classList.add(cssClass);
     }
-    
+
     if(el.top < 0 || el.top > windowH){
       if(!disabledAnimation){
         element.classList.remove(cssClass);
@@ -40,7 +43,4 @@ export class AnimationsService {
     const elements = document.querySelectorAll('[data-animation]');
     this.handleScrollAction(elements);
   }
-
-  constructor (){};
-  
 }

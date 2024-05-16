@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Inject, Input, OnInit, Output, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Curriculum } from '../../interfaces/curriculum.interface';
 import { AnimationsService } from '../../services/animation.service';
 
@@ -46,9 +46,11 @@ export class BubbleComponent implements OnInit {
     return this.openModal.emit(item);
   }
 
-  constructor(private animationsService: AnimationsService){}
+  constructor(private animationsService: AnimationsService, @Inject(PLATFORM_ID) private platformId: Object) { }
 
   ngOnInit(): void {
-    this.animationsService.handleGetElements();
+    if (isPlatformBrowser(this.platformId)) {
+      this.animationsService.handleGetElements();
+    }
   }
 }

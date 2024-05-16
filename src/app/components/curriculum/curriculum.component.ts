@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, LOCALE_ID, OnInit, Output } from '@angu
 import { Curriculum } from '../../interfaces/curriculum.interface';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from '../button/button.component';
+import { AnimationsService } from '../../services/animation.service';
 
 @Component({
   selector: 'curriculum-component',
@@ -43,9 +44,14 @@ export class CurriculumComponent {
   @Input() public textDirection: string = '';
 
   @Output() public openModal = new EventEmitter();
+
+  constructor(private animationsService: AnimationsService){}
+
+  ngOnInit(): void {
+    this.animationsService.handleGetElements();
+  }
   
   handleOpenModal(item: Curriculum){
     this.openModal.emit(item);
   }
-
 }
