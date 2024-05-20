@@ -40,6 +40,7 @@ export class BubbleComponent implements OnInit {
   };
   
   @Input() public bubbleType: string = '';
+  @Input() public animationDelay: string = '';
   @Output() public openModal = new EventEmitter();
 
   public handleShowModal(item:Curriculum){

@@ -35,13 +35,16 @@ export class HomeSection implements OnInit {
 
   public showModal = signal<boolean>(false);
   public modalId = signal<string>('');
+  public loading = signal<boolean>(false);
+
   public modalInformations = signal<any>({});
 
   error: any;
-  loading: boolean = false;
 
   handleOpenModal({ id, type }: any) {
     this.showModal.set(true);
+    this.loading.set(true);
+
     if (type === 'company') {
       this.loadCompanyById(id);
     }
@@ -52,6 +55,8 @@ export class HomeSection implements OnInit {
 
   handleCloseModal(value: any) {
     this.showModal.set(false);
+    this.loading.set(false);
+    this.modalInformations.set({});
   }
 
   loadCompanyById(id: string) {
@@ -59,6 +64,7 @@ export class HomeSection implements OnInit {
       query: GET_company_by_id(id)
     }).valueChanges.subscribe(({ data, error }: any) => {
       this.modalInformations.set(data.company);
+      this.loading.set(false);
     })
   }
 
@@ -67,6 +73,7 @@ export class HomeSection implements OnInit {
       query: GET_portfolio_by_id(id)
     }).valueChanges.subscribe(({ data, error }: any) => {
       this.modalInformations.set(data.portfolio);
+      this.loading.set(false);
     })
   }
 

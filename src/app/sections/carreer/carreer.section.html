@@ -4,9 +4,9 @@
       <div class="w-full flex flex-col items-start justify-start md:items-center gap-4">
         <p class="text-slate-500" data-animation="fade"><strong>#carreira</strong></p>
         <div class="w-full flex flex-col justify-start gap-4 sm:flex-row md:justify-center">
-          <h2 data-animation="fade" data-animation-delay="0.5s" class="text-white text-5xl font-bold">Graduação</h2>
-          <h2 data-animation="fade" data-animation-delay="0.8s" class="text-white text-5xl font-bold hidden md:block">&</h2>
-          <h2 data-animation="fade" data-animation-delay="1s" class="text-white text-5xl font-bold hidden md:block">Experiência</h2>
+          <h2 data-animation="fade" class="text-white text-5xl font-bold">Graduação</h2>
+          <h2 data-animation="fade" class="text-white text-5xl font-bold hidden md:block">&</h2>
+          <h2 data-animation="fade" class="text-white text-5xl font-bold hidden md:block">Experiência</h2>
         </div>
       </div>
     </div>
@@ -46,6 +46,7 @@
             (openModal)="handleOpenModal({id: company.id, type: 'company'})"
             [direction]="'items-start'"
             [textDirection]="'text-left'"
+            data-animation="fade"
           />
         }
       </div>

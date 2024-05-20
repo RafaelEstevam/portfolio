@@ -7,7 +7,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
+
 
 @keyframes blobber {
   0%  { border-radius: 48% 52% 68% 32% / 42% 28% 72% 58%; }
@@ -139,4 +141,23 @@
   &.fade{
     opacity: 1;
   }
+}
+
+@keyframes progress-bar {
+  0%{
+    width: 0px;
+    left: 0px;
+  }
+  50%{
+    width: 50%;
+    left: 50%;
+  }
+  100%{
+    width: 50%;
+    left: 100%;
+  }
+}
+
+.loading{
+  animation: progress-bar 2s linear infinite;
 }
