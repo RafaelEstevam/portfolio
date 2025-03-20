@@ -26,7 +26,7 @@ export class CarreerSection implements OnInit {
     this.apollo.watchQuery({
       query: GET_companies
     }).valueChanges.subscribe(({data, error} : any) => {
-      this.companies = data.companies.filter((item:Curriculum) => item.isGraduation === false);
+      this.companies = data.companies.filter((item:Curriculum) => item.isGraduation === false).sort((a,b) => b.startEndDate.isCurrent);
       this.graduations = data.companies.filter((item:Curriculum) => item.isGraduation === true);
       this.animationsService.handleGetElements();
     })
