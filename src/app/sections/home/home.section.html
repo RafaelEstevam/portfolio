@@ -18,13 +18,15 @@
       <div class="w-full flex flex-col justify-center md:w-1/2">
         <div id="home" class="flex flex-col gap-4 justify-center min-h-screen items-center xl:items-start">
           <h1 class="text-white text-5xl font-bold text-center xl:text-left lg:text-7xl" data-animation="fade" data-animation-duration="0.5s" data-animation-delay="0.3s">Rafael Estevam de Oliveira</h1>
-          <p class="text-white text-3xl font-thin text-center xl:text-left" data-animation="fade" data-animation-duration="0.8s" data-animation-delay="0.5s">Desenvolvedor <strong>Front-end</strong></p>
+          <p class="text-white text-3xl font-thin text-center xl:text-left" data-animation="fade" data-animation-duration="0.8s" data-animation-delay="0.5s">Desenvolvedor <strong>Full-stack</strong></p>
           <p class="bg-blue-600 text-white px-2 rounded-xl" data-animation="fade" data-animation-duration="1s" data-animation-delay="0.8s">
-            <strong>#react </strong>
-            <strong>#vue </strong>
-            <strong>#angular </strong>
-            <strong>#next </strong>
-            <strong>#typescript </strong>
+            <strong>#React </strong>
+            <strong>#Angular </strong>
+            <strong>#Next </strong>
+            <strong>#Python </strong>
+            <strong>#SQL </strong>
+            <strong>#NoSQL </strong>
+            <strong>#AWS </strong>
           </p>
         </div>
   
@@ -32,8 +34,14 @@
           <p class="bg-blue-600 text-white px-2 rounded-xl w-fit">
             <strong >#sobre</strong>
           </p>
-          <h2 class="text-white text-5xl font-bold">Da ideia para a tela!</h2>
-          <p class="text-white text-xl font-thin " data-animation="fade" data-animation-duration="0.5s">Focado no desenvolvimento web com especialidade em front-end, atuo no mercado desde 2017, aplicando meus conhecimentos, experiências e auxiliando os times onde atuo em diversos cenários e problemas adversos.</p>
+          <h2 class="text-white text-5xl font-bold">Apresentação</h2>
+          <div class="text-white text-xl font-thin " data-animation="fade" data-animation-duration="0.5s">
+            <p>Olá! Meu nome é Rafael Estevam de Oliveira, sou desenvolvedor Full Stack com mais de 9 anos de experiência na criação e manutenção de soluções web para empresas de diferentes portes e segmentos.</p> <br/>
+            <p>Atuo principalmente no desenvolvimento de interfaces modernas e responsivas, utilizando tecnologias como ReactJS, NextJS, Angular e Vue, com integração a back-ends em NodeJS, Python e Java, além de bancos de dados relacionais e não-relacionais como MySQL, PostgreSQL e MongoDB. Tenho também vivência com práticas DevOps (Docker, Kubernetes, AWS), testes automatizados (Jest, Cypress) e ferramentas de automação como o N8N.</p><br/>
+            <p>Trabalhei em empresas como a EY (Ernst & Young), Printi, FITec e Gauge, sempre contribuindo com melhorias de performance, usabilidade, segurança e integração com APIs modernas (REST/GraphQL). Paralelamente, atuo como freelancer desde 2015, desenvolvendo sites e sistemas sob demanda, com foco em entregar valor real para o cliente com agilidade e qualidade.</p><br/>
+            <p>Sou movido por desafios e por uma vontade constante de aprender e evoluir. Busco colaborar com times que valorizam inovação, excelência técnica e um ambiente de troca de conhecimento.</p> <br/>
+            <strong>Vamos construir algo incrível juntos?</strong>
+          </div>
         </div>
       </div>
     </div>
@@ -43,7 +51,7 @@
 <portfolio-section (openModal)="handleOpenModal($event)"  />
 <carreer-section (openModal)="handleOpenModal($event)" />
 <skills-section />
-<blog-section />
+<!-- <blog-section /> -->
 <contact-section />
 
 @if(loading()){
