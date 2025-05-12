@@ -81,7 +81,7 @@ export class HomeSection implements OnInit {
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
-      this.animationsService.handleGetElements();
+      // this.animationsService.handleGetElements();
     }
   }
 }

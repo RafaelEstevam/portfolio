@@ -20,7 +20,19 @@ export class SkillsSection implements OnInit {
     this.apollo.watchQuery({
       query: GET_tecnologiesLists
     }).valueChanges.subscribe(({data, error} : any) => {
-      this.mainTecnologies = data.tecnologiesLists.filter((item:any) => item.isMain === true);
+
+
+      let tecnologiesList:any[] = []
+
+      data.tecnologiesLists.map((list:any) => {
+        list.tecnologies.map((item:any) => {
+          item.isMain === true && tecnologiesList.push(item)
+        })
+      });
+
+      console.log(tecnologiesList)
+
+      this.mainTecnologies = tecnologiesList;
       this.tecnologies = data.tecnologiesLists.filter((item:any) => item.isMain === false);
       this.animationsService.handleGetElements();
     })

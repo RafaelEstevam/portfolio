@@ -8,7 +8,7 @@
         <p class="text-white text-2xl text-center sm:text-left" data-animation="fade">
           Português - <strong>Nativo</strong></p>
         <p class="text-white text-2xl text-center sm:text-left" data-animation="fade">Inglês
-          - <strong>Intermediário (B2)</strong></p>
+          - <strong>Intermediário B2+ (cursando)</strong></p>
       </div>
     </div>
   </div>
@@ -30,17 +30,15 @@
       </div>
       <div class="w-full">
         <p class="text-white text-2xl text-left md:text-center" data-animation="fade" data-animation-delay="0.5s" >
-          Desenvolvimento Front-end com foco em</p>
+          Desenvolvimento Full Stack com foco em</p>
       </div>
       <div class="columns-2 space-y-8 gap-8 md:space-y-0 md:columns-auto md:flex md:justify-center"
         data-animation="fade" >
-        @for(item of mainTecnologies; track tecnologies.id){
-          @for(tecnology of item.tecnologies; track tecnology.name; let i = $index; let l = $last){
+        @for(item of mainTecnologies; track item.name; let i = $index; let l = $last){
           <div
             class="w-full h-[200px] border-2 rounded-2xl border-slate-700 flex justify-center items-center md:w-[200px] md:h-[200px] ">
-            <h2 class="text-white text-3xl font-bold">{{tecnology.name}}</h2>
+            <h2 class="text-white text-3xl font-bold">{{item.name}}</h2>
           </div>
-          }
         }
       </div>
       <div class="w-full">

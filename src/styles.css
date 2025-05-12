@@ -133,7 +133,7 @@
   }
 }
 
-[data-animation='fade']{
+/* [data-animation='fade']{
   opacity: 0;
   transition-duration: 0.5s;
   transition-property: all;
@@ -141,7 +141,7 @@
   &.fade{
     opacity: 1;
   }
-}
+} */
 
 @keyframes progress-bar {
   0%{
